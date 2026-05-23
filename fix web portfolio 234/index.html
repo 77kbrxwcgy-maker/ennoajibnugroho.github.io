@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enno Ajib Nugroho — Portfolio</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind Configuration for Custom Themes -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'serif'],
+          },
+          colors: {
+            brand: {
+              blue: '#2255CC',
+              purple: '#6633BB',
+              darkBg: '#0A0B10',
+              darkCard: '#14151F',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    .dark ::-webkit-scrollbar-thumb { background: #252740; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb { background: #E2E6F0; border-radius: 4px; }
+    
+    /* Reveal Animation Utility */
+    .reveal { opacity: 0; transform: translateY(24px); transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-brand-darkBg dark:text-slate-100 font-sans antialiased transition-colors duration-300">
+
+  <!-- =====================================================
+       NAVBAR
+  ===================================================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-brand-darkBg/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#hero" class="flex items-center">
+        <img src="logoku.PNG" alt="Logo" class="h-8 w-auto block dark:brightness-125">
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <li><a href="#experience" class="hover:text-brand-blue dark:hover:text-blue-400 transition-colors">Pengalaman</a></li>
+        <li><a href="#projects" class="hover:text-brand-blue dark:hover:text-blue-400 transition-colors">Proyek</a></li>
+        <li><a href="#education" class="hover:text-brand-blue dark:hover:text-blue-400 transition-colors">Pendidikan</a></li>
+        <li><a href="#footer" class="hover:text-brand-blue dark:hover:text-blue-400 transition-colors">Kontak</a></li>
+      </ul>
+
+      <div class="flex items-center gap-4">
+        <!-- Theme Toggle Switch Button -->
+        <button id="themeToggle" class="flex items-center gap-2 p-2 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-all" aria-label="Toggle dark mode">
+          <span id="toggleIcon" class="text-sm">☀️</span>
+          <span id="toggleLabel" class="text-xs font-semibold px-1 text-slate-600 dark:text-slate-300 hidden sm:inline">Light</span>
+        </button>
+
+        <!-- Mobile Menu Toggle Button (Hamburger) -->
+        <button id="hamburger" class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none" aria-label="Open menu">
+          <span class="w-6 h-0.5 bg-slate-900 dark:bg-white transition-transform duration-300" id="line1"></span>
+          <span class="w-6 h-0.5 bg-slate-900 dark:bg-white transition-opacity duration-300" id="line2"></span>
+          <span class="w-6 h-0.5 bg-slate-900 dark:bg-white transition-transform duration-300" id="line3"></span>
+        </button>
+      </div>
+    </div>
+
+<!-- Mobile Navigation Drawer -->
+    <div id="navLinks" class="hidden absolute top-full left-0 right-0 bg-white dark:bg-brand-darkBg border-b border-slate-200 dark:border-slate-800 px-6 py-6 flex-col gap-4 shadow-xl md:hidden">
+      <a href="#hero" class="block text-base font-medium text-slate-700 dark:text-slate-300 py-2">Home</a>
+    </div>
+  </nav>
+
+  <!-- =====================================================
+       HERO SECTION
+  ===================================================== -->
+  <section id="hero" class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+    <!-- Ambient Blur Background Effects -->
+    <div class="absolute top-[-10%] right-[5%] w-96 h-96 rounded-full bg-blue-600/10 dark:bg-blue-400/10 blur-[80px] pointer-events-none"></div>
+    <div class="absolute bottom-[10%] left-[5%] w-80 h-80 rounded-full bg-purple-600/10 dark:bg-purple-400/10 blur-[80px] pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-6 w-full py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        
+        <!-- Hero Text Details -->
+        <div class="md:col-span-7 space-y-6 text-center md:text-left">
+          <span class="inline-block text-xs font-bold tracking-widest text-brand-purple dark:text-purple-400 uppercase bg-purple-50 dark:bg-purple-950/40 px-3 py-1.5 rounded-md">
+            Portfolio Profesional &amp; Studi Kasus Nyata
+          </span>
+          <h1 class="font-serif text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-none">
+            Enno Ajib <span class="bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400">Nugroho</span>
+          </h1>
+          <p class="text-sm md:text-base font-semibold text-slate-500 dark:text-slate-400 tracking-wide">
+            Customer Service &amp; Cashier &nbsp;·&nbsp; Operations &amp; Administrative Support &nbsp;·&nbsp; Tech-Savvy Professional
+          </p>
+          <p class="text-sm md:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-xl mx-auto md:mx-0">
+            Profesional adaptif dengan rekam jejak solid dalam operasional layanan pelanggan garis depan, pengelolaan keuangan tunai harian, dan verifikasi data operasional presisi tinggi. Terbiasa dengan jadwal bergilir dan lingkungan bertekanan tinggi. Secara mandiri membangun infrastruktur digital berbasis HTML/CSS/JS untuk turnamen futsal resmi, membuktikan kemampuan problem-solving teknis di luar deskripsi pekerjaan formal.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
+            <a href="CV_Enno_Ajib_Nugroho.pdf" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-blue to-brand-purple hover:opacity-90 text-white rounded-xl font-medium shadow-lg shadow-blue-600/20 dark:shadow-none transition-transform hover:-translate-y-0.5">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Unduh CV
+            </a>
+            <a href="#footer" class="inline-flex items-center gap-2 px-6 py-3 border border-slate-300 dark:border-slate-700 bg-transparent hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-900 dark:text-white rounded-xl font-medium transition-transform hover:-translate-y-0.5">
+              Hubungi Saya →
+            </a>
+          </div>
+        </div>
+
+        <!-- Profile Photo Frame -->
+        <div class="md:col-span-5 flex justify-center">
+          <div class="relative w-64 h-72 md:w-72 md:h-80 group">
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-brand-blue to-brand-purple p-[3px] shadow-xl">
+              <div class="w-full h-full bg-slate-50 dark:bg-brand-darkCard rounded-[13px] overflow-hidden flex items-center justify-center relative">
+                
+                <!-- 
+                  [SILAKAN GANTI FOTO KAMU DI SINI]
+                  Petunjuk manual: Masukkan file foto wajah/profil kamu ke dalam folder 'assets' dengan nama 'profile.png'
+                -->
+                <img src="ennoajibnugroho.jpeg" alt="Foto Profil Enno Ajib" class="absolute inset-0 w-full h-full object-cover z-10 error-fallback" onerror="this.style.opacity='0';" />
+                
+                <!-- Tampilan Cadangan jika file foto belum dimasukkan -->
+                <div class="flex flex-col items-center gap-3 text-slate-400 dark:text-slate-600 p-4 text-center">
+                  <svg class="w-16 h-16 opacity-40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  <p class="text-xs font-mono text-slate-400">assets/profile.png<br><span class="text-[10px] text-slate-400/70">(Ganti manual dengan foto wajah Anda)</span></p>
+                </div>
+
+              </div>
+            </div>
+            <!-- Decorative shadow offset card -->
+            <div class="absolute -bottom-3 -right-3 w-full h-full bg-brand-blue/10 dark:bg-purple-500/5 rounded-2xl -z-10 transition-transform group-hover:translate-x-1 group-hover:translate-y-1"></div>
+            
+            <!-- Availability Floating Badge -->
+            <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-white dark:bg-brand-darkCard border border-slate-200 dark:border-slate-800 rounded-xl shadow-md flex items-center gap-2.5 whitespace-nowrap z-20">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse ring-4 ring-emerald-500/20"></span>
+              <span class="text-xs font-medium text-slate-600 dark:text-slate-300">Tersedia untuk peluang baru</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       EXPERIENCE SECTION
+  ===================================================== -->
+  <section id="experience" class="py-24 bg-slate-50 dark:bg-brand-darkCard/40 border-y border-slate-100 dark:border-slate-900">
+    <div class="max-w-4xl mx-auto px-6">
+      
+      <div class="reveal mb-16">
+        <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-brand-blue dark:text-blue-400 mb-2">
+          <span class="w-8 h-[2px] bg-gradient-to-r from-brand-blue to-brand-purple rounded"></span>
+          Pengalaman Kerja
+        </div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Rekam Jejak Profesional</h2>
+      </div>
+
+      <!-- Vertical Timeline Component -->
+      <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 space-y-12">
+        
+        <!-- Experience Card 1 -->
+        <div class="relative pl-8 reveal">
+          <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-blue border-4 border-slate-50 dark:border-brand-darkBg ring-4 ring-blue-500/10"></span>
+          <div class="bg-white dark:bg-brand-darkCard p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-all hover:border-brand-blue dark:hover:border-blue-500/50">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+              <div>
+                <h3 class="font-serif text-xl font-bold text-slate-900 dark:text-white">Operation &amp; Data Support / Electrical Installation Assistant</h3>
+                <p class="text-sm font-semibold text-brand-blue dark:text-blue-400 mt-1">PT PLN (Persero) &amp; PT Haleyora Power</p>
+              </div>
+              <span class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 whitespace-nowrap">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Jan 2024 – Sekarang
+              </span>
+            </div>
+            <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-300 list-none">
+              <li class="relative pl-5 before:content-['▸'] before:absolute before:left-0 before:text-brand-purple dark:before:text-purple-400">Memastikan akurasi verifikasi data operasional 100% di bawah tenggat waktu ketat, mendukung kelancaran pelaporan korporat infrastruktur ketenagalistrikan.</li>
+              <li class="relative pl-5 before:content-['▸'] before:absolute before:left-0 before:text-brand-purple dark:before:text-purple-400">Mengelola sistem manajemen digital untuk entri, rekonsiliasi, dan arsip data lapangan, meminimalkan kesalahan input secara signifikan.</li>
+              <li class="relative pl-5 before:content-['▸'] before:absolute before:left-0 before:text-brand-purple dark:before:text-purple-400">Mendampingi eksekusi teknis instalasi listrik di lapangan, memastikan kepatuhan penuh terhadap standar keselamatan kerja yang berlaku.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience Card 2 -->
+        <div class="relative pl-8 reveal">
+          <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-blue border-4 border-slate-50 dark:border-brand-darkBg ring-4 ring-blue-500/10"></span>
+          <div class="bg-white dark:bg-brand-darkCard p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-all hover:border-brand-blue dark:hover:border-blue-500/50">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+              <div>
+                <h3 class="font-serif text-xl font-bold text-slate-900 dark:text-white">Cashier &amp; Customer Service</h3>
+                <p class="text-sm font-semibold text-brand-blue dark:text-blue-400 mt-1">Toko Yuli BriLink</p>
+              </div>
+              <span class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 whitespace-nowrap">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Jan 2022 – Sekarang
+              </span>
+            </div>
+            <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-300 list-none">
+              <li class="relative pl-5 before:content-['▸'] before:absolute before:left-0 before:text-brand-purple dark:before:text-purple-400">Menangani operasional kasir garis depan dengan akurasi saldo kas harian 100%, mengelola volume transaksi tinggi termasuk pada jam sibuk puncak.</li>
+              <li class="relative pl-5 before:content-['▸'] before:absolute before:left-0 before:text-brand-purple dark:before:text-purple-400">Memberikan edukasi proaktif kepada nasabah mengenai produk &amp; layanan keuangan BriLink, meningkatkan kepercayaan dan loyalitas pelanggan.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience Card 3 -->
+        <div class="relative pl-8 reveal">
+          <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-blue border-4 border-slate-50 dark:border-brand-darkBg ring-4 ring-blue-500/10"></span>
+          <div class="bg-white dark:bg-brand-darkCard p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-all hover:border-brand-blue dark:hover:border-blue-500/50">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+              <div>
+                <h3 class="font-serif text-xl font-bold text-slate-900 dark:text-white">Business Owner &amp; E-Commerce Manager</h3>
+                <p class="text-sm font-semibold text-brand-blue dark:text-blue-400 mt-1">Eleven Store ID</p>
+              </div>
+              <span class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 whitespace-nowrap">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Jan 2025 – Sekarang
+              </span>
+            </div>
+            <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-300 list-none">
+              <li class="relative pl-5 before:content-['▸'] before:absolute before:left-0 before:text-brand-purple dark:before:text-purple-400">Mendirikan dan mengelola operasional e-commerce secara penuh, mencakup manajemen katalog produk, kontrol inventaris, dan pemenuhan pesanan.</li>
+              <li class="relative pl-5 before:content-['▸'] before:absolute before:left-0 before:text-brand-purple dark:before:text-purple-400">Menangani konsultasi pelanggan digital secara langsung, memberikan respons cepat dan solusi tepat yang mendorong konversi penjualan.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       PROJECTS SECTION
+  ===================================================== -->
+  <section id="projects" class="py-24 bg-white dark:bg-brand-darkBg">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <div class="reveal mb-16">
+        <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-brand-purple dark:text-purple-400 mb-2">
+          <span class="w-8 h-[2px] bg-gradient-to-r from-brand-blue to-brand-purple rounded"></span>
+          Proyek &amp; Organisasi
+        </div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Inisiatif &amp; Kontribusi Nyata</h2>
+      </div>
+
+      <!-- Responsive Grid Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Project Card 1 (Girilusi - With Eleven Store Logo Placeholder) -->
+        <div class="bg-slate-50 dark:bg-brand-darkCard border border-slate-200 dark:border-slate-800/80 p-6 md:p-8 rounded-2xl flex flex-col justify-between hover:-translate-y-1 transition-all hover:shadow-lg shadow-sm hover:border-brand-purple dark:hover:border-purple-500/50 reveal">
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              
+              <!-- CONTAINER LOGO ELEVEN STORE FUTSAL -->
+              <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-950/60 flex items-center justify-center text-xl flex-shrink-0 relative overflow-hidden border border-slate-200 dark:border-slate-700">
+                <!-- 
+                  [SILAKAN GANTI LOGO ELEVEN STORE DI SINI]
+                  Petunjuk manual: Masukkan file logo Eleven Store ke folder 'assets' dengan nama 'logo-elevenstore.png'
+                -->
+                <img src="#" alt="Logo Eleven Store" class="absolute inset-0 w-full h-full object-cover z-10" onerror="this.style.opacity='0';" />
+                <span class="z-0 text-base">⚽</span>
+              </div>
+
+              <div>
+                <h3 class="font-serif text-lg font-bold text-slate-900 dark:text-white leading-tight">Girilusi Futsal Competition</h3>
+                <span class="text-xs font-medium text-slate-400">April 2026 – Sekarang</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-md bg-purple-50 dark:bg-purple-950/50 text-brand-purple dark:text-purple-400 w-fit">
+                Ketua Infrastruktur Digital
+              </span>
+              <span class="text-[11px] text-slate-400 font-mono italic"></span>
+            </div>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Menginisiasi dan memimpin pengembangan infrastruktur digital resmi turnamen, termasuk membangun landing page official menggunakan HTML, CSS, dan JavaScript murni. Mengintegrasikan portal sponsor Eleven Store &amp; Toko Yuli BriLink ke dalam ekosistem halaman, serta mengamankan koordinasi resmi dengan AFKAB untuk legitimasi kompetisi.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-6">
+            <span class="text-xs font-medium px-2.5 py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400">HTML</span>
+            <span class="text-xs font-medium px-2.5 py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400">CSS</span>
+            <span class="text-xs font-medium px-2.5 py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="bg-slate-50 dark:bg-brand-darkCard border border-slate-200 dark:border-slate-800/80 p-6 md:p-8 rounded-2xl flex flex-col justify-between hover:-translate-y-1 transition-all hover:shadow-lg shadow-sm hover:border-brand-purple dark:hover:border-purple-500/50 reveal">
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-950/60 flex items-center justify-center text-xl flex-shrink-0">
+                🏆
+              </div>
+              <div>
+                <h3 class="font-serif text-lg font-bold text-slate-900 dark:text-white leading-tight">Elvnstre Futsal Tournament</h3>
+                <span class="text-xs font-medium text-slate-400">Jan 2026 – Feb 2026</span>
+              </div>
+            </div>
+            <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-md bg-purple-50 dark:bg-purple-950/50 text-brand-purple dark:text-purple-400 w-fit">
+              Penyelenggara Turnamen
+            </span>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Merancang dan mengeksekusi penyelenggaraan turnamen futsal dari nol: menyusun jadwal pertandingan dengan algoritma penjadwalan manual, memformulasikan peraturan kompetisi, dan memimpin kampanye peningkatan kesadaran merek melalui kanal promosi digital dan offline.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-6">
+            <span class="text-xs font-medium px-2.5 py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Event Planning</span>
+            <span class="text-xs font-medium px-2.5 py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Promotion</span>
+          </div>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="bg-slate-50 dark:bg-brand-darkCard border border-slate-200 dark:border-slate-800/80 p-6 md:p-8 rounded-2xl flex flex-col justify-between hover:-translate-y-1 transition-all hover:shadow-lg shadow-sm hover:border-brand-purple dark:hover:border-purple-500/50 reveal">
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 flex items-center justify-center text-xl flex-shrink-0">
+                📣
+              </div>
+              <div>
+                <h3 class="font-serif text-lg font-bold text-slate-900 dark:text-white leading-tight">SMANSAKA Football</h3>
+                <span class="text-xs font-medium text-slate-400">Sep 2023 – Jan 2025</span>
+              </div>
+            </div>
+            <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-md bg-purple-50 dark:bg-purple-950/50 text-brand-purple dark:text-purple-400 w-fit">
+              Public Relations (Humas)
+            </span>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Mengelola komunikasi organisasi eksternal dan internal ekstrakulikuler sepak bola SMAN 1 Karangkobar. Bertanggung jawab atas publikasi media sosial resmi, membangun narasi publik positif, dan menjalankan negosiasi sponsor untuk mendukung operasional tim.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-6">
+            <span class="text-xs font-medium px-2.5 py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Public Relations</span>
+            <span class="text-xs font-medium px-2.5 py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Sponsorship</span>
+          </div>
+        </div>
+
+        <!-- Project Card 4 -->
+        <div class="bg-slate-50 dark:bg-brand-darkCard border border-slate-200 dark:border-slate-800/80 p-6 md:p-8 rounded-2xl flex flex-col justify-between hover:-translate-y-1 transition-all hover:shadow-lg shadow-sm hover:border-brand-purple dark:hover:border-purple-500/50 reveal">
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-950/60 flex items-center justify-center text-xl flex-shrink-0">
+                🤝
+              </div>
+              <div>
+                <h3 class="font-serif text-lg font-bold text-slate-900 dark:text-white leading-tight">P5 — Bhinneka Tunggal Ika</h3>
+                <span class="text-xs font-medium text-slate-400">2023</span>
+              </div>
+            </div>
+            <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-md bg-purple-50 dark:bg-purple-950/50 text-brand-purple dark:text-purple-400 w-fit">
+              Kontributor Proyek
+            </span>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Berpartisipasi aktif dalam Proyek Penguatan Profil Pelajar Pancasila bertema Bhinneka Tunggal Ika, mengasah kemampuan pemecahan masalah kolaboratif, manajemen waktu lintas tim, dan komunikasi efektif dalam lingkungan multi-perspektif.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-6">
+            <span class="text-xs font-medium px-2.5 py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Teamwork</span>
+            <span class="text-xs font-medium px-2.5 py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Project Merdeka</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       EDUCATION SECTION
+  ===================================================== -->
+  <section id="education" class="py-24 bg-slate-50 dark:bg-brand-darkCard/40 border-t border-slate-100 dark:border-slate-900">
+    <div class="max-w-4xl mx-auto px-6">
+      
+      <div class="reveal text-center mb-16">
+        <div class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-brand-blue dark:text-blue-400 mb-2 mx-auto">
+          <span class="w-6 h-[2px] bg-gradient-to-r from-brand-blue to-brand-purple rounded"></span>
+          Pendidikan
+          <span class="w-6 h-[2px] bg-gradient-to-r from-brand-purple to-brand-blue rounded"></span>
+        </div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Latar Belakang Akademis</h2>
+      </div>
+
+      <div class="bg-white dark:bg-brand-darkCard border border-slate-200 dark:border-slate-800/80 p-8 md:p-10 rounded-2xl shadow-sm hover:shadow-md transition-all hover:border-brand-purple dark:hover:border-purple-500/40 reveal max-w-2xl mx-auto flex flex-col sm:flex-row gap-6 items-start">
+        
+        <!-- CONTAINER LOGO SEKOLAH -->
+        <div class="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center text-3xl flex-shrink-0 mx-auto sm:mx-0 relative overflow-hidden">
+          <!-- 
+            [SILAKAN GANTI LOGO SEKOLAH DI SINI]
+            Petunjuk manual: Masukkan file logo sekolah (SMANSAKA) ke folder 'assets' dengan nama 'logo-smansaka.png'
+          -->
+          <img src="smansaka.jpeg" alt="Logo SMAN 1 Karangkobar" class="absolute inset-0 w-full h-full object-cover z-10" onerror="this.style.opacity='0';" />
+          <span class="z-0 text-3xl">🏫</span>
+        </div>
+
+        <div class="flex-1 text-center sm:text-left space-y-3">
+          <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white">SMAN 1 Karangkobar</h3>
+          <p class="text-sm font-semibold text-brand-blue dark:text-blue-400">SMA / Sekolah Menengah Atas · Kurikulum Merdeka</p>
+          
+          <div class="flex flex-wrap justify-center sm:justify-start gap-2.5 text-xs font-medium text-slate-500 dark:text-slate-400">
+            <span class="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Lulus 2026</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800">📍 Banjarnegara, Jawa Tengah</span>
+          </div>
+          <span class="block text-[11px] text-slate-400 font-mono italic"></span>
+          
+          <!-- GPA Section Callout -->
+          <div class="pt-2 flex items-baseline justify-center sm:justify-start gap-2">
+            <span class="font-serif text-3xl font-bold bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400">85.39</span>
+            <span class="text-xs text-slate-400 font-medium">/ 100 — Nilai Akhir</span>
+          </div>
+
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed pt-2">
+            Aktif memimpin di ekstrakulikuler manajemen olahraga sebagai Humas SMANSAKA Football (Sep 2023–Jan 2025), mengelola reputasi publik dan kemitraan sponsor. Menyelesaikan Proyek Penguatan Profil Pelajar Pancasila (P5) tema Bhinneka Tunggal Ika dengan kontribusi nyata pada kerja tim dan kepemimpinan proyek.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================
+       FOOTER / CONTACT SECTION
+  ===================================================== -->
+  <footer id="footer" class="bg-white dark:bg-brand-darkBg border-t border-slate-200 dark:border-slate-900 pt-20 pb-10">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+        
+        <!-- Left Column: CTA Contact Details -->
+        <div class="space-y-6">
+          <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
+            Mari Berkolaborasi <span class="bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400">Bersama</span>
+          </h2>
+          <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-md">
+            Terbuka untuk peluang kerja, proyek kolaborasi, atau sekadar percakapan profesional. Jangan ragu untuk menghubungi saya melalui kanal di bawah ini.
+          </p>
+
+          <div class="space-y-4">
+            <!-- Email Connection Card -->
+            <div class="flex items-center gap-4 p-4 border border-slate-100 dark:border-slate-800/60 rounded-xl bg-slate-50/50 dark:bg-brand-darkCard/30">
+              <div class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-950/40 flex items-center justify-center text-brand-blue dark:text-blue-400 flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <span class="block text-xs font-semibold uppercase tracking-wider text-slate-400">Email</span>
+                <a href="mailto:ennoajib1138@icloud.com" class="text-sm font-medium text-slate-900 dark:text-white hover:text-brand-blue dark:hover:text-blue-400 transition-colors break-all">
+                  ennoajib1138@icloud.com
+                </a>
+              </div>
+            </div>
+
+            <!-- Phone Connection Card -->
+            <div class="flex items-center gap-4 p-4 border border-slate-100 dark:border-slate-800/60 rounded-xl bg-slate-50/50 dark:bg-brand-darkCard/30">
+              <div class="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6.06 6.06l.98-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <span class="block text-xs font-semibold uppercase tracking-wider text-slate-400">WhatsApp / Phone</span>
+<a href="https://wa.me/628571208238" class="text-sm font-medium text-slate-900 dark:text-white hover:text-brand-blue dark:hover:text-blue-400 transition-colors break-all">
+                  0857-1200-8238
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Social Media Layers (LinkedIn & Instagram) -->
+        <div class="space-y-4">
+          <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400">Media Sosial &amp; Jejaring</h3>
+          <div class="grid grid-cols-1 gap-3">
+            
+            <!-- LinkedIn Interactive Button -->
+            <!-- 
+              [SILAKAN GANTI TAUTAN LINKEDIN ANDA]
+              Petunjuk manual: Ganti '#' dengan URL profil LinkedIn asli Anda (misal: https://linkedin.com/in/username)
+            -->
+            <a href="https://www.linkedin.com/in/ennoajib11" target="_blank" class="group flex items-center justify-between p-4 bg-slate-50 dark:bg-brand-darkCard hover:bg-blue-50/40 dark:hover:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-xl transition-all hover:border-blue-500/50 hover:translate-x-1">
+              <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-lg bg-blue-100 dark:bg-blue-950/50 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 fill-[#0A66C2]" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900 dark:text-white">LinkedIn</h4>
+                  <p class="text-xs text-slate-400">Terhubung secara profesional</p>
+                </div>
+              </div>
+              <span class="text-slate-400 group-hover:text-brand-blue group-hover:translate-x-1 transition-transform font-bold">→</span>
+            </a>
+
+            <!-- Instagram Interactive Button -->
+            <!-- 
+              [SILAKAN GANTI TAUTAN INSTAGRAM ANDA]
+              Petunjuk manual: Ganti '#' dengan URL profil Instagram asli Anda (misal: https://instagram.com/ennoajibnugroho)
+            -->
+            <a href="https://www.instagram.com/ennoajibnugroho_?igsh=MXExeGJvNTd0NTl1Yg%3D%3D&utm_source=qr" target="_blank" class="group flex items-center justify-between p-4 bg-slate-50 dark:bg-brand-darkCard hover:bg-pink-50/30 dark:hover:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-xl transition-all hover:border-pink-500/40 hover:translate-x-1">
+              <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-lg bg-pink-50 dark:bg-purple-950/30 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 fill-url(#ig-gradient-file)" viewBox="0 0 24 24">
+                    <defs>
+                      <linearGradient id="ig-gradient-file" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#FFDC80"/><stop offset="25%" stop-color="#FCAF45"/><stop offset="50%" stop-color="#F77737"/><stop offset="75%" stop-color="#C13584"/><stop offset="100%" stop-color="#833AB4"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900 dark:text-white">Instagram</h4>
+                  <p class="text-xs text-slate-400">@ennoajibnugroho</p>
+                </div>
+              </div>
+              <span class="text-slate-400 group-hover:text-pink-500 group-hover:translate-x-1 transition-transform font-bold">→</span>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Branding Info -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-slate-200 dark:border-slate-900 text-xs text-slate-400 font-medium">
+        <p>© 2026 Enno Ajib Nugroho. All Rights Reserved.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =====================================================
+       JAVASCRIPT LOGIC
+  ===================================================== -->
+  <script>
+    /* ── CORE DARK/LIGHT MODE TOGGLE ENGINE ───────────────── */
+    const docHtml = document.documentElement;
+    const btnToggle = document.getElementById('themeToggle');
+    const labelToggleIcon = document.getElementById('toggleIcon');
+    const labelToggleName = document.getElementById('toggleLabel');
+
+    function executeThemeUpdate(targetTheme) {
+      if (targetTheme === 'dark') {
+        docHtml.classList.add('dark');
+        labelToggleIcon.textContent = '🌙';
+        labelToggleName.textContent = 'Dark';
+      } else {
+        docHtml.classList.remove('dark');
+        labelToggleIcon.textContent = '☀️';
+        labelToggleName.textContent = 'Light';
+      }
+      localStorage.setItem('theme_preference', targetTheme);
+    }
+
+    // Tampilan UTAMA di-set sebagai LIGHT MODE secara default sesuai instruksi user
+    const currentStoredPreference = localStorage.getItem('theme_preference') || 'light';
+    executeThemeUpdate(currentStoredPreference);
+
+    // Toggle klik event
+    btnToggle.addEventListener('click', () => {
+      const activeState = docHtml.classList.contains('dark') ? 'light' : 'dark';
+      executeThemeUpdate(activeState);
+    });
+
+    /* ── SCROLL OBSERVER REVEAL ENGINE ────────────────────── */
+    const targetAnimatedElements = document.querySelectorAll('.reveal');
+    const scrollRevealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(item => {
+        if (item.isIntersecting) {
+          item.target.classList.add('visible');
+          scrollRevealObserver.unobserve(item.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
+
+    targetAnimatedElements.forEach(element => scrollRevealObserver.observe(element));
+
+    /* ── RESPONSIVE HAMBURGER DRAWING DRAWER ────────────────── */
+    const btnHamburger = document.getElementById('hamburger');
+    const menuDrawer = document.getElementById('navLinks');
+    const line1 = document.getElementById('line1');
+    const line2 = document.getElementById('line2');
+    const line3 = document.getElementById('line3');
+
+    btnHamburger.addEventListener('click', () => {
+      const isOpened = menuDrawer.classList.contains('flex');
+      if (isOpened) {
+        menuDrawer.classList.remove('flex');
+        menuDrawer.classList.add('hidden');
+        line1.classList.remove('rotate-45', 'translate-y-2');
+        line2.classList.remove('opacity-0');
+        line3.classList.remove('-rotate-45', '-translate-y-2');
+      } else {
+        menuDrawer.classList.remove('hidden');
+        menuDrawer.classList.add('flex');
+        line1.classList.add('rotate-45', 'translate-y-2');
+        line2.classList.add('opacity-0');
+        line3.classList.add('-rotate-45', '-translate-y-2');
+      }
+    });
+
+    menuDrawer.querySelectorAll('a').forEach(anchorLink => {
+      anchorLink.addEventListener('click', () => {
+        menuDrawer.classList.remove('flex');
+        menuDrawer.classList.add('hidden');
+        line1.classList.remove('rotate-45', 'translate-y-2');
+        line2.classList.remove('opacity-0');
+        line3.classList.remove('-rotate-45', '-translate-y-2');
+      });
+    });
+
+    /* ── NAVBAR SCROLL COMPRESSION STYLING EFFECTS ─────────── */
+    const elementNavbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        elementNavbar.classList.add('shadow-md', 'py-2');
+        elementNavbar.classList.remove('py-4');
+      } else {
+        elementNavbar.classList.remove('shadow-md', 'py-2');
+        elementNavbar.classList.add('py-4');
+      }
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
